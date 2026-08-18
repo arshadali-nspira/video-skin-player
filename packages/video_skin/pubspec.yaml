@@ -1,0 +1,22 @@
+name: video_skin
+description: A backend-agnostic custom control surface for Flutter video players.
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Pulls the still frames shown above the scrubber. The only plugin the skin
+  # depends on, and only ever used for a source that exposes a readable URL.
+  video_thumbnail_plus: ^0.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
