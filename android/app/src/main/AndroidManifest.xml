@@ -3,7 +3,7 @@
          Without this the player stays blank in release builds. -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="flutter_application_11"
+        android:label="Video Skin Player"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

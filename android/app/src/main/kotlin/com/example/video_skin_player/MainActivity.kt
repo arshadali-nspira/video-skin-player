@@ -1,4 +1,4 @@
-package com.example.flutter_application_11
+package com.example.video_skin_player
 
 import io.flutter.embedding.android.FlutterActivity
 

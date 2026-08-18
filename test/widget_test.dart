@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_application_11/main.dart';
-import 'package:flutter_application_11/player/video_source.dart';
-import 'package:flutter_application_11/player/youtube_link.dart';
+import 'package:video_skin_player/main.dart';
+import 'package:video_skin_player/player/video_source.dart';
+import 'package:video_skin_player/player/youtube_link.dart';
 
 void main() {
   testWidgets('home screen shows the link field and samples', (tester) async {

@@ -1,4 +1,4 @@
-# flutter_application_11
+# video_skin_player
 
 A Flutter video player app with a fully custom control surface. Paste a YouTube
 link, a bare video ID, or a direct MP4/HLS URL and it plays with hand-built
@@ -29,8 +29,8 @@ flutter doctor
 ## Setup
 
 ```bash
-git clone https://github.com/arshadali-nspira/flutter_application_11.git
-cd flutter_application_11
+git clone https://github.com/arshadali-nspira/video-skin-player.git
+cd video-skin-player
 flutter pub get
 ```
 
@@ -46,10 +46,28 @@ dependency_overrides:
   flutter_inappwebview: 6.2.0-beta.3
 ```
 
-This is deliberate. `omni_video_player` pulls in `flutter_inappwebview`, and the
-beta is the version that resolves cleanly here. Removing the override will most
-likely break `flutter pub get`, so leave it in place unless you are also
-upgrading `omni_video_player`.
+This is deliberate, and it is load-bearing for the **Android build**.
+
+`omni_video_player` depends on `flutter_inappwebview: ^6.1.5`. That range
+excludes pre-releases, so `6.2.0-beta.3` can only be forced in via an override.
+The beta is needed because this project builds with **AGP 9.0.1 / Gradle
+9.1.0**, and 6.1.5 predates AGP 9 support:
+
+| | 6.1.5 (`_android` 1.1.3) | 6.2.0-beta.3 (`_android` 1.2.0-beta.3) |
+|---|---|---|
+| AGP | 8.0.1 | 8.13.1 |
+| `compileSdk` | hardcoded `34` | `flutter.compileSdkVersion` |
+| Java | 8 | 17 |
+
+The beta's changelog carries the fixes for
+[#2765](https://github.com/pichillilorenzo/flutter_inappwebview/issues/2765)
+("Upgrade to AGP 9") and
+[#2761](https://github.com/pichillilorenzo/flutter_inappwebview/issues/2761).
+
+Note that removing the override still lets `flutter pub get` and `flutter test`
+succeed — it resolves to 6.1.5 and unit tests never compile native code. The
+failure only appears on an actual Android build. Leave the override in place
+unless you are also upgrading `omni_video_player` or downgrading AGP.
 
 ## Running
 
